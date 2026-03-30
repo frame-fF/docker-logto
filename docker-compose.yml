@@ -1,0 +1,17 @@
+services:
+  app:
+    image: svhd/logto:${TAG-latest}
+    entrypoint: ["sh", "-c", "npm run cli db seed -- --swe && npm start"]
+    ports:
+      - 3001:3001
+      - 3002:3002
+    environment:
+      - TRUST_PROXY_HEADER=1
+      - DB_URL=postgres://postgres:password@postgresql:5432/logto
+      - ENDPOINT=https://auth.ff-soft.dev
+      - ADMIN_ENDPOINT=https://logto.ff-soft.dev
+
+networks:
+  default:
+    external: true
+    name: base
