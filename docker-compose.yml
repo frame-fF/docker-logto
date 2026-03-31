@@ -2,7 +2,7 @@ services:
   app:
     image: svhd/logto:${TAG-latest}
     container_name: logto
-    entrypoint: ["sh", "-c", "npm run cli db seed -- --swe && npm run alteration deploy && npm start"]
+    entrypoint: ["sh", "-c", "npm run cli db seed -- --swe && npm run alteration deploy 1.38.0 && npm start"]
     ports:
       - 3001:3001
       - 3002:3002
